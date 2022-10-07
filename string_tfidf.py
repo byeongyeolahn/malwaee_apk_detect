@@ -30,9 +30,10 @@ def tf_idf(word_list):
     idf = np.log((D+1) / (df+1)) + 1
     
     tfidf = tf * idf
-    tfidf = tfidf / np.linalg.norm(tfidf, axis = 1, keepims = True)
+    tfidf = tfidf / np.linalg.norm(tfidf, axis = 1, keepdims = True)
     return tfidf
     
 if __name__ == "__main__":
-    file_list = file_list_fun('APK가 존재하는 디렉토리 경로')
-    print(tf_idf(androguard_string(str(file_list[0]))))
+    apk_dir_path = 'APK 파일 존재하는 디렉토리 경로'
+    file_list = file_list_fun(apk_dir_path)
+    print(tf_idf(androguard_string(apk_dir_path + '\\' + str(file_list[0]))))
